@@ -1,1 +1,4 @@
 https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce?select=olist_orders_dataset.csv
+
+1) Create external location backed by S3.
+2) Create catalog, schema, and volume
