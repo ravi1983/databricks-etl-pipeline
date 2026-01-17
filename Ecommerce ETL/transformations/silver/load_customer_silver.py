@@ -1,7 +1,7 @@
 from pyspark import pipelines as dp
 import pyspark.sql.functions as F
 
-# This view hold the transformed data, and used a source for both gold and silver
+# This view hold the transformed data, and used as source for both gold and silver
 @dp.view(
     name='customers_dedup__view'
 )

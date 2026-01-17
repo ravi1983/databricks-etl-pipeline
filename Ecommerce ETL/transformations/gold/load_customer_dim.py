@@ -1,7 +1,6 @@
 from pyspark import pipelines as dp
 import pyspark.sql.functions as F
   
-# Creating deduped silver table with CDC type1
 dp.create_streaming_table(
   name='customers_dim'
 )
