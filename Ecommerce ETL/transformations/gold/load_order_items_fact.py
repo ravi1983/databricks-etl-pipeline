@@ -5,8 +5,8 @@ from pyspark import pipelines as dp
 )
 def load_order_items_fact():
     orders_df = dp.read("orders_dim")
-    items_df = dp.read("order_items_silver")
     customer_df = dp.read("customers_dim")
+    items_df = dp.read_stream("order_items_silver") # This created streaming table
 
     # 1. First, join orders and customers to get a complete order profile
     orders_with_customers = orders_df.join(
