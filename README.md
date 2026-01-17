@@ -29,7 +29,7 @@ The pipeline follows the Medallion design pattern, utilizing streaming tables fo
 
 ### Prerequisites
 * Access to a Databricks Workspace with Unity Catalog enabled.
-* The Brazilian Ecommerce dataset uploaded to a UC Volume or S3 location.
+* The Brazilian Ecommerce dataset from data directory, uploaded to a S3 location.
 
 ### Deployment
 1.  Clone this repository into your Databricks Workspace.
