@@ -9,7 +9,7 @@ def customers_silver_view():
   return (spark.readStream.table('customer_bronze')
             # Adding here affects both silver and gold layers
             .filter(F.col('customer_id').isNotNull())
-            .withColumn('created_on', F.current_timestamp()))
+            .withColumn('created_on', F.current_timestamp())) # Ideally should use event date
 
 dp.create_streaming_table(
   name='customers_silver',

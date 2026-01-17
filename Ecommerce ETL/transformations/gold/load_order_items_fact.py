@@ -4,9 +4,11 @@ from pyspark import pipelines as dp
     name = "order_items_fact"
 )
 def load_order_items_fact():
+    # While streaming with non-streaming sources, we lose ability to handle late arriving dimensions.
+    # I did not handle it here for brevity
     orders_df = dp.read("orders_dim")
     customer_df = dp.read("customers_dim")
-    items_df = dp.read_stream("order_items_silver") # This created streaming table
+    items_df = spark.readStream.table("order_items_silver") # This creates streaming table
 
     # 1. First, join orders and customers to get a complete order profile
     orders_with_customers = orders_df.join(
