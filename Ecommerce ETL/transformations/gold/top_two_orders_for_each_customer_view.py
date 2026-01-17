@@ -3,7 +3,7 @@ import pyspark.sql.functions as F
 from pyspark.sql.window import Window
 
 @dp.materialized_view(
-    name = "top_two_orders_for_each_customer",
+    name = "top_two_orders_for_each_customer_view",
     comment = "Top two orders for EACH customer by order value"
 )
 def top_two_orders_each_customer():
