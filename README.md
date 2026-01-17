@@ -14,9 +14,9 @@ The pipeline follows the Medallion design pattern, utilizing streaming tables fo
 1.  **Bronze (Ingestion):** Raw data is ingested from cloud storage into streaming tables. This stage maintains the raw fidelity of the source data.
 2.  **Silver (Transformation & Quality):** Data is cleaned and refined. This layer implements pipeline expectations to enforce data quality and transforms raw records into normalized streaming tables.
 3.  **Gold (Analytics):** A Star Schema implementation consisting of:
-    * `fact_order_items`
-    * `dim_orders`
-    * `dim_customers`
+    * `order_items_fact`
+    * `orders_dim`
+    * `customers_dim`
 4.  **Presentation Layer:** A Materialized View is used to calculate complex analytics, specifically identifying the **top 2 orders per customer** by total value.
 
 ## Tech Stack
