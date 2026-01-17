@@ -7,12 +7,14 @@ import pyspark.sql.functions as F
 )
 def customers_silver_view():
   return (spark.readStream.table('customer_bronze')
+            # Add it here affects both silver and gold layers
+            .filter(F.col('customer_id').isNotNull())
             .withColumn('created_on', F.current_timestamp()))
 
 dp.create_streaming_table(
   name='customers_silver',
-  expect_all_or_drop = { # Data quality checks
-    "customer_not_null": "customer_id != null"
+  expect_all_or_drop = { # Added expectation to demonstrate data quality checks
+    "customer_id_not_null": "customer_id is not null"
   }
 )
 dp.create_auto_cdc_flow( # Abstracts the CDC logic
