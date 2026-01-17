@@ -9,7 +9,7 @@ def orders_view():
   return (spark.readStream.table('orders_bronze')
             .withColumn('created_on', F.current_timestamp()))
   
-# Creating deduped silver table with CDC type1
+
 dp.create_streaming_table(
   name='orders_silver'
 )

@@ -2,7 +2,7 @@ from pyspark import pipelines as dp
 import pyspark.sql.functions as F
 from pyspark.sql.types import DecimalType
 
-# This view hold the transformed data, and used as source for both gold and silver
+# This view hold the transformed data, and used as the source for both gold and silver
 @dp.view(
     name='order_items_view'
 )

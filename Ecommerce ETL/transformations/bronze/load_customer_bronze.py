@@ -9,12 +9,11 @@ schema = StructType([
     StructField('customer_state', StringType(), True)
 ])
 
-@dp.table(
+@dp.table( # Creates streaming table ONLY if spark streaming is returned from function.
     name='customer_bronze'
 )
 def load_customer_bronze():
-    # The function must return a Spark Streaming DataFrame (eg., Kafka)
-    # Can enhance this by adding checkpointing.
+    # The function must return a Spark Streaming DataFrame
     return (spark.readStream.format("cloudFiles")
         .option("cloudFiles.format", "csv")
         .option("header", 'true')
