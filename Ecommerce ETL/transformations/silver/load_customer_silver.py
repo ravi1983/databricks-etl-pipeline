@@ -7,7 +7,7 @@ import pyspark.sql.functions as F
 )
 def customers_silver_view():
   return (spark.readStream.table('customer_bronze')
-            # Add it here affects both silver and gold layers
+            # Adding here affects both silver and gold layers
             .filter(F.col('customer_id').isNotNull())
             .withColumn('created_on', F.current_timestamp()))
 
